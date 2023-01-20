@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana-c2
+spec:
+  destination:
+    name: ''
+    namespace: monitoring
+    server: 'https://10.0.25.108:6443'
+  source:
+    path: grafana
+    repoURL: 'https://github.com/ja31582/argocd.git'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
